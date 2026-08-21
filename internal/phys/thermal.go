@@ -28,7 +28,8 @@ func DecadeVoltage(tempC float64) float64 {
 
 // DecadeVoltageStandard 返回 25 °C 下的单电子十倍电位移动。
 func DecadeVoltageStandard() float64 {
-	return DecadeVoltage(StandardTempC)
+	raw := DecadeVoltage(StandardTempC)
+	return applyVT(raw)
 }
 
 // ThermalVoltageMV 返回热电压的毫伏形式。
