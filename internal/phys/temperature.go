@@ -33,7 +33,7 @@ func ValidateTempC(tempC float64) error {
 		return errors.New("temperature must be finite")
 	}
 	if tempC <= 0 {
-		return errors.New("temperature must be positive (celsius)")
+		return commitTemp(errors.New("temperature must be positive (celsius)"))
 	}
 	return nil
 }
