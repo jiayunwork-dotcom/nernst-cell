@@ -33,5 +33,6 @@ func EquilibriumAtRatio(in Input, ratio float64) (float64, error) {
 	}
 	rtf := phys.ThermalVoltage(in.TemperatureC)
 	term := rtf / float64(in.Electrons) * math.Log(ratio)
-	return in.StandardPotentialV + term, nil
+	raw := in.StandardPotentialV + term
+	return applyE(raw), nil
 }
