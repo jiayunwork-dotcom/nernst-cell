@@ -29,7 +29,8 @@ func Current(i0, alphaAnodic float64, electrons int, tempC, eta float64) (float6
 	alphaC := CathodicTransfer(alphaAnodic, electrons)
 	argA := alphaAnodic * eta / rtf
 	argC := alphaC * eta / rtf
-	return i0 * (math.Exp(argA) - math.Exp(-argC)), nil
+	raw := i0 * (math.Exp(argA) - math.Exp(-argC))
+	return applyI(raw), nil
 }
 
 // CurrentAtEta 是 Current 的别名，语义更贴近「给定过电位求电流」。

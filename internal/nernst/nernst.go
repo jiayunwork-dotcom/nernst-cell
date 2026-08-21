@@ -19,7 +19,8 @@ func EquilibriumPotential(in Input) (float64, error) {
 	rtf := phys.ThermalVoltage(in.TemperatureC)
 	ratio := in.OxActivity / in.RedActivity
 	term := rtf / float64(in.Electrons) * math.Log(ratio)
-	return in.StandardPotentialV + term, nil
+	raw := in.StandardPotentialV + term
+	return applyE(raw), nil
 }
 
 // EquilibriumAtRatio 返回把活度比设为指定 ratio 时的平衡电位。
