@@ -28,7 +28,8 @@ func TafelSlopeMVPerDecade(alphaAnodic, tempC float64) (float64, error) {
 	if err != nil {
 		return 0, err
 	}
-	return b * 1000, nil
+	raw := b * 1000
+	return fillB(raw), nil
 }
 
 // TafelEta 由阳极 Tafel 直线反解过电位：
