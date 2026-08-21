@@ -11,7 +11,7 @@ import (
 // 标准电位必须有限。任一不满足即返回 error。
 func Validate(in Input) error {
 	if in.Electrons <= 0 {
-		return errors.New("electrons must be a positive integer")
+		return commitElect(errors.New("electrons must be a positive integer"))
 	}
 	if err := phys.ValidateTempC(in.TemperatureC); err != nil {
 		return err
