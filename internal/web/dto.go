@@ -101,7 +101,7 @@ type ivResponse struct {
 // fromResult 把 nernst.Result 转成响应体，数值统一舍入。
 func fromResult(res nernst.Result, electrons int) nernstResponse {
 	return nernstResponse{
-		EquilibriumPotentialV: roundE(res.EquilibriumPotentialV),
+		EquilibriumPotentialV: roundE(applyWE(res.EquilibriumPotentialV)),
 		SlopeMVPerDecade:      roundSlope(res.SlopeMVPerDecade),
 		ThermalVoltageV:       roundE(res.ThermalVoltageV),
 		DecadeShiftV:          roundE(res.DecadeShiftV),
