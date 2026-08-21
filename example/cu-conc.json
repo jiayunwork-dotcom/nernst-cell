@@ -1,0 +1,9 @@
+{
+  "label": "copper concentration cell",
+  "standard_potential_v": 0.0,
+  "electrons": 2,
+  "temperature_c": 25,
+  "ox_activity": 0.5,
+  "red_activity": 0.05,
+  "note": "same Cu/Cu2+ couple on both electrodes, E° cancels; concentrated side (ox_activity = 0.5) is the positive electrode, E ≈ +29.6 mV"
+}

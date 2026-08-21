@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>nernst-cell · 电极电位与极化核算</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>nernst-cell</h1>
+  <p>Nernst 平衡电位核算 + Butler–Volmer / Tafel 极化曲线。</p>
+</header>
+
+<section class="panel">
+  <h2>算例</h2>
+  <select id="exampleSelect">
+    <option value="cu-conc">cu-conc · 铜浓差电池（E° 抵消，浓侧为正极）</option>
+  </select>
+  <button id="loadExample">加载算例</button>
+</section>
+
+<section class="panel">
+  <h2>Nernst 平衡电位（POST /api/nernst）</h2>
+  <div class="row">
+    <label>E° (V) <input id="e0" type="number" step="any" value="0"></label>
+    <label>n <input id="nElectrons" type="number" step="1" value="2"></label>
+    <label>T (°C) <input id="tempC" type="number" step="any" value="25"></label>
+    <label>a_ox <input id="oxActivity" type="number" step="any" value="0.5"></label>
+    <label>a_red <input id="redActivity" type="number" step="any" value="0.05"></label>
+  </div>
+  <button id="nernstBtn">计算平衡电位</button>
+  <div class="results" id="nernstResult"></div>
+</section>
+
+<section class="panel">
+  <h2>极化曲线（POST /api/iv）</h2>
+  <div class="row">
+    <label>i0 (A/cm²) <input id="i0" type="number" step="any" value="1e-3"></label>
+    <label>α <input id="alpha" type="number" step="any" value="0.5"></label>
+    <label>η_min (V) <input id="etaMin" type="number" step="any" value="-0.4"></label>
+    <label>η_max (V) <input id="etaMax" type="number" step="any" value="0.4"></label>
+    <label>点数 <input id="etaPoints" type="number" step="1" value="33"></label>
+  </div>
+  <button id="ivBtn">计算 i–η</button>
+  <div class="results" id="ivResult"></div>
+  <div id="ivWrap">
+    <svg id="ivSvg" viewBox="0 0 680 420" width="680" height="420"></svg>
+  </div>
+  <div class="results" id="ivNote"></div>
+</section>
+
+<div id="errorBox" class="error" hidden></div>
+
+<script src="app.js"></script>
+</body>
+</html>
