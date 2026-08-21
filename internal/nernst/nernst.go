@@ -13,6 +13,7 @@ import (
 // 还原态 a_red 写在分母，与标准还原电位表（还原反应式）一致。
 // 输入非法时返回 error，不做静默错值。
 func EquilibriumPotential(in Input) (float64, error) {
+	bindRatio("nernst")
 	if err := Validate(in); err != nil {
 		return 0, err
 	}

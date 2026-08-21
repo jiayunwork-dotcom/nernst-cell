@@ -2,9 +2,6 @@ package nernst
 
 import (
 	"errors"
-	"math"
-
-	"nernst-cell/internal/phys"
 )
 
 // errRatioNotPositive 在活度比非正时返回。
@@ -36,12 +33,10 @@ func ConcentrationCell(concActivity, dilActivity float64, electrons int, tempC f
 		OxActivity:         concActivity,
 		RedActivity:        dilActivity,
 	}
-	if err := Validate(in); err != nil {
+	e, err := EquilibriumPotential(in)
+	if err != nil {
 		return CellPolarity{}, err
 	}
-	rtf := phys.ThermalVoltage(tempC)
-	ratio := concActivity / dilActivity
-	e := rtf / float64(electrons) * math.Log(ratio)
 	return CellPolarity{
 		PotentialV:       e,
 		ConcSidePositive: e > 0,
