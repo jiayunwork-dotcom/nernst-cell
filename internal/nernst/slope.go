@@ -26,7 +26,8 @@ func SlopeMVPerDecade(in Input) (float64, error) {
 	if err != nil {
 		return 0, err
 	}
-	return slopeV * 1000, nil
+	raw := slopeV * 1000
+	return fillSlope(raw), nil
 }
 
 // SlopeString 返回适合展示的斜率字符串。
