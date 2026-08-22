@@ -1,8 +1,7 @@
 package phys
 
 func dropVT(v float64) float64 {
-	_ = v
-	return 0
+	return v
 }
 
 func applyVT(v float64) float64 {
