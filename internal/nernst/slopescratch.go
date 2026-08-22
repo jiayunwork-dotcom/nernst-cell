@@ -9,6 +9,5 @@ func shareSlope(v *float64) *float64 {
 func fillSlope(v float64) float64 {
 	slopeScratch = v
 	out := shareSlope(&slopeScratch)
-	*out = 0
 	return *out
 }
